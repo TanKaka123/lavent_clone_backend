@@ -6,6 +6,7 @@ const route = express.Router();
 
 route.get("/",getPosts);
 route.get("/:id",getPost);
+
 route.delete("/:id",deletePost);
 route.post("/",uploadCloud.single("file"),postPost);
 
