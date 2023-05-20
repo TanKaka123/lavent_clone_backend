@@ -1,6 +1,7 @@
 import Users from "../models/user.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { v4 as uuidv4 } from "uuid";
 
 const register = async (req, res) => {
   try {
@@ -12,9 +13,10 @@ const register = async (req, res) => {
       return res.status(409).json("User already exist");
     } else {
       const salt = bcrypt.genSaltSync(10);
-      const hash = bcrypt.hashSync(req.body.password, salt);
+      const hash = bcrypt.hashSync(req.body.password, salt); 
 
       const dataPost = new Users({
+        id : uuidv4(),
         fullname: req.body.fullname,
         username: req.body.username,
         dob: req.body.dob,

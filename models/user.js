@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
 import { productSchema } from "./product.js";
 import { post } from "./post.js";
-import { v4 as uuidv4 } from "uuid";
+
 
 const userSchema = new mongoose.Schema({
   id: {
     type: String,
     required: true,
-    default: uuidv4(),
+   
   },
   username: {
     type: String,
