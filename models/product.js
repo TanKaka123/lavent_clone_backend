@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { v4 as uuid } from "uuid";
+
 
 
 
@@ -17,7 +17,6 @@ const creator = {
 const productSchema = new mongoose.Schema({
   id: {
     type: String,
-    default: uuid(),
   },
   creator:{
     type: creator,

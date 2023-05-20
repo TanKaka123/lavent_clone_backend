@@ -1,5 +1,6 @@
 import productSchema from "../models/product.js";
 import User from "../models/user.js";
+import { v4 as uuid } from "uuid";
 const getProduct = async (req, res) => {
   const idProduct = req.params.id;
   try {
@@ -51,6 +52,7 @@ const postProduct = async (req, res) => {
   const creator ={ id, username, fullname }
 
   const data = await new productSchema({
+    id : uuid(),
     creator: creator,
     name: req.body.name,
     thumbnail,
@@ -112,4 +114,24 @@ const updateListLove = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
-export { getProduct, getProducts, postProduct, deleteProduct, updateListLove };
+
+const updatePurchase = async (req, res)=>{
+  const  { purchasedItem }  = req.params;
+  const  { idUser }= req.body;
+
+  try {
+    const user = await User.findById(idUser);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    user.purchased.push(purchasedItem);
+    await user.save();
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+export { getProduct, getProducts, postProduct, deleteProduct, updateListLove, updatePurchase };
+
