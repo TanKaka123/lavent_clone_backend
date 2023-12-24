@@ -4,7 +4,7 @@ import {  createUser,
   updateUser,
   deleteUser,
   findUserById,
-} from "../services/user-service";
+} from "../services/user-service.js";
 import { userModel } from "../models";
 
 export const create = function (req, res, next) {

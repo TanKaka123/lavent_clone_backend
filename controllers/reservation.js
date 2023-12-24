@@ -4,7 +4,7 @@ import {
   findReservationById,
   updateReservationById,
   deleteReservationById,
-} from "../services/reservation-service";
+} from "../services/reservation-service.js";
 import { reservationModel } from "../models";
 
 export const create = function (req, res, next) {

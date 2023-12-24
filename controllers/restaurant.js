@@ -4,7 +4,7 @@ import {
   findRestaurantById,
   updateRestaurantById,
   deleteRestaurantById,
-} from "../services/restaurant-service";
+} from "../services/restaurant-service.js";
 import { restaurantModel } from "../models";
 
 export const create = function (req, res, next) {

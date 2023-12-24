@@ -1,6 +1,6 @@
-import userModel from "./user-model";
-import restaurantModel from "./restaurant";
-import reservationModel from "./reservation";
+import userModel from "./users.js";
+import restaurantModel from "./restaurant.js";
+import reservationModel from "./reservation.js";
 
 export  {
   userModel,
