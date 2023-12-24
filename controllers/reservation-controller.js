@@ -1,7 +1,13 @@
-const reservationService = require("../services/reservation-service");
-const { reservationModel } = require("../models");
+import {
+  createReservation,
+  findAllReservation,
+  findReservationById,
+  updateReservationById,
+  deleteReservationById,
+} from "../services/reservation-service";
+import { reservationModel } from "../models";
 
-exports.create = function (req, res, next) {
+export const create = function (req, res, next) {
   const body = new reservationModel(req.body);
 
   const callbackService = (error, response) => {
@@ -11,10 +17,10 @@ exports.create = function (req, res, next) {
       res.status(400).send(error);
     }
   };
-  reservationService.createReservation(body, callbackService);
+  createReservation(body, callbackService);
 };
 
-exports.findAll = async (req, res) => { 
+export const findAll = async (req, res) => {
   const callbackService = (error, response) => {
     if (error) {
       res.status(404).send(error);
@@ -29,10 +35,10 @@ exports.findAll = async (req, res) => {
     }
   };
 
-  reservationService.findAllReservation(  callbackService);
+  findAllReservation(callbackService);
 };
 
-exports.findById = function (req, res) {
+export const findById = function (req, res) {
   const reservationId = req.params.reservationId;
   if (!reservationId) {
     res.status(400).send("Post ID is required");
@@ -51,10 +57,10 @@ exports.findById = function (req, res) {
     res.status(404).send("Post not found");
   };
 
-  reservationService.findReservationById(reservationId, callbackService);
+  findReservationById(reservationId, callbackService);
 };
 
-exports.updateById = function (req, res) {
+export const updateById = function (req, res) {
   const reservationId = req.params.reservationId;
 
   if (!reservationId) {
@@ -69,10 +75,10 @@ exports.updateById = function (req, res) {
       res.status(400).send(err);
     }
   };
-  reservationService.updateReservationById(reservationId, updateData, callbackService);
+  updateReservationById(reservationId, updateData, callbackService);
 };
 
-exports.deleteById = function (req, res) {
+export const deleteById = function (req, res) {
   const reservationId = req.params.reservationId;
 
   if (!reservationId) {
@@ -97,5 +103,5 @@ exports.deleteById = function (req, res) {
     }
   };
 
-  reservationService.deleteReservationById(reservationId, callbackService);
+  deleteReservationById(reservationId, callbackService);
 };

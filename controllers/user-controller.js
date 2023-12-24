@@ -1,7 +1,13 @@
-const userService = require("../services/user-service");
-const { userModel } = require("../models");
+import {  createUser,
+  findByEmail,
+  updateUserById,
+  updateUser,
+  deleteUser,
+  findUserById,
+} from "../services/user-service";
+import { userModel } from "../models";
 
-exports.create = function (req, res, next) {
+export const create = function (req, res, next) {
   const body = new userModel(req.body);
 
   const callbackService = (error, response) => {
@@ -11,10 +17,10 @@ exports.create = function (req, res, next) {
       res.status(400).send(error);
     }
   };
-  userService.createUser(body, callbackService);
+  createUser(body, callbackService);
 };
 
-exports.findByEmail = function (req, res) {
+export const findByEmail = function (req, res) {
   const query = {
     email: new RegExp(req.body.email, "i"),
   };
@@ -44,7 +50,7 @@ exports.findByEmail = function (req, res) {
     .catch((error) => callbackService(error, null));
 };
 
-exports.updateById = function (req, res) {
+export const updateById = function (req, res) {
   const body = req.body;
 
   if (!body.id) {
@@ -59,10 +65,10 @@ exports.updateById = function (req, res) {
       res.status(400).send(err);
     }
   };
-  userService.updateUserById(body.id, updateData, callbackService);
+  updateUserById(body.id, updateData, callbackService);
 };
 
-exports.update = function (req, res) {
+export const update = function (req, res) {
   const body = req.body;
   const query = body.query;
   const data = body.data;
@@ -80,10 +86,10 @@ exports.update = function (req, res) {
     }
   };
 
-  userService.updateUser(query, data, options, callbackService);
+  updateUser(query, data, options, callbackService);
 };
 
-exports.delete = function (req, res) {
+export const deleteById = function (req, res) {
   const body = req.body || {};
   const query = body.query;
   if (!query) {
@@ -108,5 +114,5 @@ exports.delete = function (req, res) {
     }
   };
 
-  userService.deleteUser(query, callbackService);
+  deleteUser(query, callbackService);
 };

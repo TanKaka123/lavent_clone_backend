@@ -1,8 +1,8 @@
-const userModel = require("./user-model");
-const restaurantModel = require("./restaurant-model");
-const reservationModel = require("./reservation-model");
+import userModel from "./user-model";
+import restaurantModel from "./restaurant-model";
+import reservationModel from "./reservation-model";
 
-module.exports = {
+export  {
   userModel,
   restaurantModel,
   reservationModel,

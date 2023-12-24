@@ -1,5 +1,4 @@
-import mongoose from "mongoose";
-import { productSchema } from "./product.js";
+import mongoose from "mongoose"; 
 import { post } from "./post.js";
 
 

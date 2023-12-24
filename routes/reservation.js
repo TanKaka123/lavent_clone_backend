@@ -1,11 +1,17 @@
-const express = require('express');
+import express from "express";
 const router = express.Router();
-const reservationController = require('../controllers/reservation-controller');
+import {
+  create,
+  findAll,
+  findById,
+  updateById,
+  updateById,
+} from "../controllers/reservation-controller";
 
-router.route('/create-reservation').post(reservationController.create);
-router.route('/read-reservation').get(reservationController.findAll);
-router.route('/read-reservation/:reservationId').get(reservationController.findById);
-router.route('/update-reservation/:reservationId').put(reservationController.updateById);
-router.route('/delete-reservation/:reservationId').patch(reservationController.updateById);
+router.route("/create-reservation").post(create);
+router.route("/read-reservation").get(findAll);
+router.route("/read-reservation/:reservationId").get(findById);
+router.route("/update-reservation/:reservationId").put(updateById);
+router.route("/delete-reservation/:reservationId").patch(updateById);
 
-module.exports = router;
+export default router;

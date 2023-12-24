@@ -1,7 +1,13 @@
-const restaurantService = require("../services/restaurant-service");
-const { restaurantModel } = require("../models");
+import {
+  createRestaurant,
+  findAllRestaurants,
+  findRestaurantById,
+  updateRestaurantById,
+  deleteRestaurantById,
+} from "../services/restaurant-service";
+import { restaurantModel } from "../models";
 
-exports.create = function (req, res, next) {
+export const create = function (req, res, next) {
   const body = new restaurantModel(req.body);
 
   const callbackService = (error, response) => {
@@ -11,10 +17,10 @@ exports.create = function (req, res, next) {
       res.status(400).send(error);
     }
   };
-  restaurantService.createRestaurant(body, callbackService);
+  createRestaurant(body, callbackService);
 };
 
-exports.findAll = async (req, res) => {
+export const findAll = async (req, res) => {
   const callbackService = (error, response) => {
     if (error) {
       res.status(404).send(error);
@@ -29,10 +35,10 @@ exports.findAll = async (req, res) => {
     }
   };
 
-  restaurantService.findAllRestaurants(callbackService);
+  findAllRestaurants(callbackService);
 };
 
-exports.findById = function (req, res) {
+export const findById = function (req, res) {
   const restaurantId = req.params.restaurantId;
   if (!restaurantId) {
     res.status(400).send("Restaurant ID is required");
@@ -51,10 +57,10 @@ exports.findById = function (req, res) {
     res.status(404).send("Restaurant not found");
   };
 
-  restaurantService.findRestaurantById(restaurantId, callbackService);
+  findRestaurantById(restaurantId, callbackService);
 };
 
-exports.updateById = function (req, res) {
+export const updateById = function (req, res) {
   const restaurantId = req.params.id;
 
   if (!restaurantId) {
@@ -69,10 +75,14 @@ exports.updateById = function (req, res) {
       res.status(400).send(err);
     }
   };
-  restaurantService.updateRestaurantById(restaurantId, updateData, callbackService);
+  updateRestaurantById(
+    restaurantId,
+    updateData,
+    callbackService
+  );
 };
 
-exports.deleteById = function (req, res) {
+export const deleteById = function (req, res) {
   const restaurantId = req.params.id;
 
   if (!restaurantId) {
@@ -97,5 +107,5 @@ exports.deleteById = function (req, res) {
     }
   };
 
-  restaurantService.deleteRestaurantById(restaurantId, callbackService);
+  deleteRestaurantById(restaurantId, callbackService);
 };

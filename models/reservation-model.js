@@ -1,4 +1,4 @@
-const mongoose = require("mongoose"); 
+import mongoose from "mongoose"; 
 
 const reversationSchema = new mongoose.Schema({
   restaurant: {
@@ -53,4 +53,4 @@ const reversationSchema = new mongoose.Schema({
 
 const Reversation = mongoose.model("Reversation", reversationSchema);
 
-module.exports = Reversation;
+export default  Reversation;
