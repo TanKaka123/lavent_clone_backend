@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 dotenv.config();
 
 export default async function connection() {
-    const mongooDB = process.env.DB_MONGODB
+    const mongooDB = "mongodb+srv://username123:oq6f3HVT41jdDRH9@restaurant-booking.a3sw4mu.mongodb.net/?retryWrites=true&w=majority"
     try {
         const connectionParams = {
             useNewUrlParser: true,
