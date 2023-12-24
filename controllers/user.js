@@ -2,8 +2,7 @@ import {  createUser,
   findByEmail,
   updateUserById,
   updateUser,
-  deleteUser,
-  findUserById,
+  deleteUser, 
 } from "../services/user-service.js";
 import { userModel } from "../models/users.js";
 
@@ -44,8 +43,7 @@ export const findByEmail = function (req, res) {
     }
   };
 
-  userService
-    .findByEmail(query)
+  findByEmail(query)
     .then((response) => callbackService(null, response))
     .catch((error) => callbackService(error, null));
 };
