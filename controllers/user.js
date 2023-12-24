@@ -1,5 +1,5 @@
 import {  createUser,
-  findByEmail,
+  findUserByEmail,
   updateUserById,
   updateUser,
   deleteUser, 
@@ -43,7 +43,7 @@ export const findByEmail = function (req, res) {
     }
   };
 
-  findByEmail(query)
+  findUserByEmail(query)
     .then((response) => callbackService(null, response))
     .catch((error) => callbackService(error, null));
 };

@@ -13,7 +13,7 @@ export const createUser = function (data, callback) {
   );
 };
 
-export const findByEmail = function (query, callback) {
+export const findUserByEmail = function (query, callback) {
   return user.findOne(query).exec();
 };
 
