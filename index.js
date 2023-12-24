@@ -18,8 +18,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 createConnectionMongo();
 
-app.use("/api/v1/reservation",reservationRoute);
+
 app.use("/api/v1/restaurant", restaurantRoute);
+app.use("/api/v1/reservation",reservationRoute);
 app.use("/api/v1/user", userRoute);
 
 
