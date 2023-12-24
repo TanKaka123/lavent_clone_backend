@@ -6,7 +6,7 @@ import {
   findById,
   updateById,
   deleteById,
-} from "../controllers/reservation.js";
+} from "../controllers/restaurant.js";
 
 router.route("/create-restaurant").post(create);
 router.route("/read-restaurant").get(findAll);
