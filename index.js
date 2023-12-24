@@ -2,8 +2,9 @@ import express from "express";
 import authRoute from "./routes/auth.js";
 import productRoute from "./routes/product.js";
 import postRoute from "./routes/post.js";
-import reservationRoute from "./routes/reservation.js";
+
 import restaurantRoute from "./routes/restaurant.js";
+import reservationRoute from "./routes/reservation.js";
 import userRoute from "./routes/user.js";
 
 import createConnectionMongo from "./database/createConnectionMongo.js";
