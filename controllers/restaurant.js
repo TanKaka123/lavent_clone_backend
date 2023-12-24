@@ -5,7 +5,7 @@ import {
   updateRestaurantById,
   deleteRestaurantById,
 } from "../services/restaurant-service.js";
-import { restaurantModel } from "../models";
+import { restaurantModel } from "../models/restaurant.js";
 
 export const create = function (req, res, next) {
   const body = new restaurantModel(req.body);

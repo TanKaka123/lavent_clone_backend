@@ -1,4 +1,4 @@
-import userModel from "../models";
+import userModel from "../models/users.js";
 
 const user = userModel;
 

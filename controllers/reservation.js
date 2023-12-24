@@ -5,7 +5,7 @@ import {
   updateReservationById,
   deleteReservationById,
 } from "../services/reservation-service.js";
-import { reservationModel } from "../models";
+import { reservationModel } from "../models/reservation.js";
 
 export const create = function (req, res, next) {
   const body = new reservationModel(req.body);

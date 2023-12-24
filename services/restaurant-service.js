@@ -1,4 +1,4 @@
-import restaurantModel from "../models";
+import restaurantModel from "../models/restaurant.js";
 
 const restaurant = restaurantModel;
 

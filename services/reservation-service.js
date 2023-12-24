@@ -1,4 +1,4 @@
-import reservationModel from "../models";
+import reservationModel from "../models/reservation.js";
 
 const reservation = reservationModel;
 
