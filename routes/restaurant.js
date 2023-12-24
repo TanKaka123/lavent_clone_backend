@@ -6,7 +6,7 @@ import {
   findById,
   updateById,
   deleteById,
-} from "../controllers/restaurant-controller";
+} from "../controllers/restaurant";
 
 router.route("/create-restaurant").post(create);
 router.route("/read-restaurant").get(findAll);
