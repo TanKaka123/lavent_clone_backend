@@ -4,7 +4,7 @@ import {  createUser,
   updateUser,
   deleteUser, 
 } from "../services/user-service.js";
-import { userModel } from "../models/users.js";
+import  userModel  from "../models/users.js";
 
 export const create = function (req, res, next) {
   const body = new userModel(req.body);
